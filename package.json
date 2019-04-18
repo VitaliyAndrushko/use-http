@@ -22,6 +22,8 @@
     "react": "^16.8.0"
   },
   "dependencies": {
+    "content-type": "^1.0.4",
+    "media-typer": "^1.0.1",
     "react": "^16.8.6",
     "react-scripts": "2.1.8",
     "use-http-test": "^0.1.29"
