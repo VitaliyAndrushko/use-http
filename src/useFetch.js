@@ -20,6 +20,8 @@ export function useFetch(url, initialOptions) {
   // }, []);
 
   const fetchData = useCallback(async () => {
+    setLoading(true)
+
     if (controller !== null) {
       controller.abort()
     }
@@ -35,19 +37,14 @@ export function useFetch(url, initialOptions) {
     }
 
     try {
-      const response = await fetch(url, options)
-      // const contentType =  response.headers.get('content-type')
       let data = null
-      // if (contentType && isJSON(contentType)) {
-      //   data = await response.json()
-      // } else {
-      //   data = await response.text()
-      // }
+      const response = await fetch(url, options)
+
       try {
         data = await response.json()
       } finally {}
 
-      if (!data) {
+      if (data === null) {
         try {
           data = await response.text()
         } catch (err) {
